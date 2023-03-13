@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_package = "com.classpark.kitpat.kitpat-common.proto";
+option java_multiple_files = true;
+option java_outer_classname = "MessageRegister";
+
+message Msg {
+  Head head = 1;
+  string body = 2;
+}
+
+message Head {
+  string msgId = 1;
+  MsgType msgType = 2;
+  MsgContentType msgContentType = 3;
+  string fromId = 4;
+  string toId = 5;
+  fixed64 timestamp = 6;
+  int32 status = 7;
+  string extend = 8;
+}
+
+enum MsgContentType {
+  TXT = 0;
+  IMG = 1;
+  EMOJI = 2;
+  VOICE = 3;
+  VIDEO = 4;
+  LOCATION = 5;
+  PACKET = 6;
+  FILE = 7;
+}
+
+enum MsgType {
+  HAND_SHAKE = 0;
+  HEART_BEAT = 1;
+  SERVERS_REFRESHED = 2;
+  USER_FORCE_OFFLINE = 3;
+  CLIENT_STATUS_SWITCHED = 4;
+  PULL_OFFLINE_MSG = 5;
+  OFFER_OFFLINE_MSG = 6;
+  ACK_OFFLINE_MSG_RECEIVED = 7;
+  ACK_MSG_FROM_SERVER_RECEIVED = 8;
+  ACK_MSG_FROM_CLIENT_RECEIVED = 9;
+  SINGLE_CHAT = 10;
+  GROUP_CHAT = 11;
+  OTHER = 12;
+}
